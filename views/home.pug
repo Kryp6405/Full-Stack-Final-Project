@@ -1,0 +1,46 @@
+extends template.pug
+
+block content
+    section.d-flex.flex-column.min-vh-100.justify-content-start.align-items-center(style='background-color: #ececec')
+        .container.mt-5
+            .row
+                .col-md-10.mx-auto.rounded.shadow.bg-light 
+                    h1.auth-header.my-4 MyList
+                    table.table.table-striped.table-bordered.table-responsive-md
+                        thead
+                            tr
+                                th Name 
+                                th Phone 
+                                th Email 
+                                th Address 
+                                th Contact 
+                        tbody.table-group-divider
+                            each c in contacts
+                                tr 
+                                    td 
+                                        a(href='/'+c.id) #{c.title} #{c.first_name} #{c.last_name}
+                                    td #{c.phone}
+                                    td #{c.email}
+                                    td #{c.address} #{c.latitude}/#{c.longitude}
+                                    td
+                                        div
+                                            if c.contact_by_phone === 'on'
+                                                input(type='checkbox' id='phone' disabled checked)
+                                                label(for="phone") Phone
+                                            else
+                                                input(type='checkbox' id='phone' disabled)
+                                                label(for="phone") Phone
+                                        div
+                                            if c.contact_by_email === 'on'
+                                                input(type='checkbox' id='email' disabled checked)
+                                                label(for="email1") Email
+                                            else
+                                                input(type='checkbox' id='email' disabled)
+                                                label(for="email1") Email 
+                                        div     
+                                            if c.contact_by_mail === 'on'
+                                                input(type='checkbox' id='mail' disabled checked)
+                                                label(for="mail") Mail
+                                            else
+                                                input(type='checkbox' id='mail' disabled)
+                                                label(for="mail") Mail

@@ -1,0 +1,31 @@
+extends template.pug
+
+block content
+    section.d-flex.flex-column.min-vh-100.justify-content-center.align-items-center(style='background-color: #ececec')
+        .container
+            .row
+                .col-md-10.mx-auto.rounded.shadow.bg-light 
+                    .row
+                        .col-md-6
+                            .m-5.text-center
+                                h1.auth-header Login   
+                            form.m-5(action="/login_user", method="post")  
+                                .form-row 
+                                    .input-group.mb-3 
+                                        span.input-group-text(id="basic-addon1")
+                                            img(src='/person.svg')
+                                        input.form-control(type='text' placeholder='Username' id ='username' name='username' aria-label="username" aria-describedby="basic-addon1" required='')
+                                .form-row 
+                                    .input-group.mb-3 
+                                        span.input-group-text(id="basic-addon2")
+                                            img(src='/key.svg')
+                                        input.form-control(type='password' placeholder='Password' id='password' name='password' required='' aria-label="password" aria-describedby="basic-addon2")    
+                                div
+                                    button.form-control.btn.btn-dark.btn-block(type='submit') Login
+                                p.text-danger.auth-error #{message}
+                                div
+                                    p.auth-switch 
+                                        | Don't have an account yet? 
+                                        a.auth-switch-link(href='/sign_up') Sign up here!
+                        .col-md-6
+                            img.img-fluid.p-5.justify-content-center(src='/loginimg.svg' alt='login')

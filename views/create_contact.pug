@@ -1,0 +1,61 @@
+extends template.pug 
+
+block content
+    section.d-flex.flex-column.min-vh-100.justify-content-start.align-items-center(style='background-color: #ececec')
+        .container.my-4
+            .row 
+                .col-md-8.mx-auto.mb-4
+                    h1.auth-header Create Contact
+            .row
+                .col-md-8.mx-auto.rounded.shadow.bg-light.p-3
+                    form(action="/add_contact", method="post")  
+                        fieldset
+                            legend Basic Info 
+                            div.form-floating.mb-3 
+                                input.form-control(type='text' id='floatingInputValue' name='first_name' placeholder='First Name')
+                                label(for='floatingInputValue') First Name
+                            div.form-floating.mb-3
+                                input.form-control(type='text' id='floatingInputValue' name='last_name' placeholder='Last Name')
+                                label(for='floatingInputValue') Last Name
+                            div.form-floating.mb-3 
+                                input.form-control(type='text' id='floatingInputValue' name='title' placeholder='Mr./Mrs./Ms./Dr./None')
+                                label(for='floatingInputValue') Title
+                            div.form-floating.mb-3
+                                input.form-control(type='tel' id='floatingInputValue' name='phone' placeholder='Phone')
+                                label(for='floatingInputValue') Phone
+                            div.form-floating.mb-3
+                                input.form-control(type='email' id='floatingInputValue' name='email' placeholder='Email')
+                                label(for='floatingInputValue') Email
+
+                        fieldset
+                            legend Address 
+                            div.form-floating.mb-3 
+                                input.form-control(type='text' id='floatingInputValue' name='street' placeholder='Street')
+                                label(for='floatingInputValue') Street
+                            div.form-floating.mb-3
+                                input.form-control(type='text' id='floatingInputValue' name='city' placeholder='City')
+                                label(for='floatingInputValue') City
+                            div.form-floating.mb-3
+                                input.form-control(type='text' id='floatingInputValue' name='state' placeholder='State')
+                                label(for='floatingInputValue') State
+                            div.form-floating.mb-3
+                                input.form-control(type='text' id='floatingInputValue' name='zip' placeholder='Zip')
+                                label(for='floatingInputValue') Zip
+                            div.form-floating.mb-3
+                                input.form-control(type='text' id='floatingInputValue' name='country' placeholder='Country')
+                                label(for='floatingInputValue') Country
+                        fieldset
+                            legend Contact Preferences 
+                            div 
+                                input(type='checkbox' id='contact_by_phone' name='contact_by_phone')
+                                label(for='contact_by_phone') Contact By Phone
+                            div 
+
+                                input(type='checkbox' id='contact_by_email' name='contact_by_email')
+                                label(for='contact_by_email') Contact By Email
+
+                            div 
+                                input(type='checkbox' id='contact_by_mail' name='contact_by_mail')
+                                label(for='contact_by_mail') Contact By Mail
+                        a.btn.btn-secondary.me-1(href='/' role='button') Cancel
+                        button.btn.btn-success(type='submit') Add

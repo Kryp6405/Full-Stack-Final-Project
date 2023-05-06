@@ -1,0 +1,36 @@
+#pagination-nav{
+    padding: 2em 0 1em 0;
+}
+
+.auth-header{
+    font-weight: 700;
+}
+
+.auth-error{
+    margin-top: 1em;
+}
+
+.auth-switch-link{
+    text-decoration: none;
+    font-weight: 700;
+    color: black;
+    transition: .5s;
+    margin-left: 0.5em;
+}
+
+.auth-switch{
+    display: flex;
+    justify-content: center;
+}
+
+
+.escape-img{
+    width: 100%;
+    height: auto;
+}
+
+.profile-img{
+    width: 75%;
+    height: auto;
+}
+

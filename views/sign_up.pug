@@ -1,0 +1,53 @@
+extends template.pug 
+
+block content
+    section.d-flex.flex-column.min-vh-100.justify-content-center.align-items-center(style='background-color: #ececec')
+        .container
+            .row
+                .col-md-10.mx-auto.rounded.shadow.bg-light 
+                    .row
+                        .col-md-6
+                            .m-5.text-center
+                                h1.auth-header Sign Up
+                                p 
+                                | Please select a username, and a password. Don't worry about any password rules here, we don't really care much about protecting your information - so 
+                                code helloworld
+                                |  is just fine by us!
+                                br
+                                form.mt-3(action="/add_user", method="post") 
+                                    .form-row 
+                                        .input-group.mb-3 
+                                            span.input-group-text(id="basic-addon1")
+                                                img(src='/person.svg')
+                                            input.form-control(type='text' placeholder='First Name' id = 'first_name' name='first_name' aria-label="first name" aria-describedby="basic-addon1" required='')
+                                    .form-row 
+                                        .input-group.mb-3 
+                                            span.input-group-text(id="basic-addon1")
+                                                img(src='/person.svg')
+                                            input.form-control(type='text' placeholder='Last Name' id = 'last_name' name='last_name' aria-label="last name" aria-describedby="basic-addon1" required='')    
+                                    hr
+                                    .form-row 
+                                        .input-group.mb-3 
+                                            span.input-group-text(id="basic-addon1")
+                                                img(src='/person.svg')
+                                            input.form-control(type='text' placeholder='Username' id ='username' name='username' aria-label="username" aria-describedby="basic-addon1" required='')
+                                    .form-row 
+                                        .input-group.mb-3 
+                                            span.input-group-text(id="basic-addon2")
+                                                img(src='/key.svg')
+                                            input.form-control(type='password' placeholder='Password' id='password' name='password' required='' aria-label="password" aria-describedby="basic-addon2")   
+                                    .form-row 
+                                        .input-group.mb-3 
+                                            span.input-group-text(id="basic-addon2")
+                                                img(src='/key.svg')
+                                            input.form-control(type='password' placeholder='Confirm Password' id='confirm_password' name='confirm_password' required='' aria-label="confirm_password" aria-describedby="basic-addon2")
+                                    p.text-danger.auth-error #{message}
+                                    hr  
+                                    div
+                                        button.form-control.btn.btn-dark.btn-block(type='submit') Sign Up
+                                    div.mt-3
+                                        p.auth-switch
+                                            | Already have an account? 
+                                            a.auth-switch-link(href='/login') Sign in here!
+                        .col-md-6
+                            img.img-fluid.p-5(src='/signupimg.svg' alt='signup')

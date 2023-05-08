@@ -6,6 +6,8 @@ const Database = require('./database');
 const db = new Database();
 db.init();
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
 app.use(express.urlencoded({extended: true}));
 
 app.use(express.static('public'));

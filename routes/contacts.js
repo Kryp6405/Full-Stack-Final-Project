@@ -16,6 +16,11 @@ const home_page = async (req, res) => {
     res.render('home',{title: 'Contact List', contacts: contacts, user: req.session.user});
 };
 
+router.get('/contacts', async (req,res) => {
+    const contacts = await req.db.getContacts();
+    res.json({contacts: contacts, user: req.session.user})
+});
+
 const add_contact = async(req, res) => {
     const contact = req.body; 
     const result = await geocoder.geocode({
@@ -28,7 +33,7 @@ const add_contact = async(req, res) => {
     if(result.length > 0) {
         console.log('Result', result);
         console.log(`The location of ${result[0].formattedAddress} is ${result[0].latitude}/${result[0].longitude}`)
-        await req.db.createContact(req.body, result[0].formattedAddress, result[0].latitude, result[0].longitude);
+        const id = await req.db.createContact(req.body, result[0].formattedAddress, result[0].latitude, result[0].longitude);
         res.redirect('/');
     }
     else{

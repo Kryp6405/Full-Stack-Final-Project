@@ -130,7 +130,3 @@ const on_row_click = (e) => {
     const lng = row.dataset.lng;
     map.flyTo(new L.LatLng(lat, lng));
 }
-
-const deleteContact = async (id) => {
-
-}

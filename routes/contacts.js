@@ -55,8 +55,25 @@ const open_contact_page = async (req, res) => {
 };
 
 const update_contact = async (req, res) => {
-    const contact = req.body;
-    await req.db.updateContact(contact, req.params.id);
+    const contact = req.body; 
+    const result = await geocoder.geocode({
+        streetName: contact.street,
+        city: contact.city,
+        state: contact.state,
+        country: contact.country,
+        zipcode: contact.zip
+    });
+    //const result = await geocoder.geocode(String(req.body.street) + ", " + String(req.body.city) + " " + String(req.body.state));
+    if(result.length > 0) {
+        console.log('Result', result);
+        console.log(`The location of ${result[0].formattedAddress} is ${result[0].latitude}/${result[0].longitude}`)
+        const id = await req.db.updateContact(req.body, result[0].formattedAddress, result[0].latitude, result[0].longitude, req.params.id);
+        res.redirect('/');
+    }
+    else{
+        console.log('No address', result);
+        res.render('contact_info',{error: 'Address not found! Try Again.'});
+    }
     res.redirect('/');
 }
 

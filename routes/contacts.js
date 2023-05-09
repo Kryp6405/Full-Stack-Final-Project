@@ -30,6 +30,7 @@ const add_contact = async(req, res) => {
         country: contact.country,
         zipcode: contact.zip
     });
+    //const result = await geocoder.geocode(String(req.body.street) + ", " + String(req.body.city) + " " + String(req.body.state));
     if(result.length > 0) {
         console.log('Result', result);
         console.log(`The location of ${result[0].formattedAddress} is ${result[0].latitude}/${result[0].longitude}`)
